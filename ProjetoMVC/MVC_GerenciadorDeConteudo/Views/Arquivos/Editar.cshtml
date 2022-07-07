@@ -1,0 +1,55 @@
+﻿@{
+    Business.Arquivo arquivo = ViewBag.Arquivo;
+}
+
+    <div class="jumbotron">
+        <h3>Nova </h3>
+        <div>
+            <a href="/arquivos" class=" btn btn-default">Voltar</a>
+        </div>
+        <form action="/Arquivos/@arquivo.Id/alterar" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label for="arquivo">Titulo:</label>
+                <input type="text" class="form-control" value="@arquivo.Titulo" id="titulo" name="titulo" />
+            </div>
+
+            <div class="form-group form-check">
+                <label for="Processo">Processo:</label>
+
+                <select name="Processo" class="form-control">
+                    <option selected>-Selecione--</option>
+                    <option value="Admistrativo">Admistrativo</option>
+                    <option value="TI">TI</option>
+                </select>
+            </div>
+
+
+            <div class="form-group form-check">
+                <label for="categoria">Categoria:</label>
+
+                <select name="categoria" class="form-control">
+                    <option selected>-Selecione--</option>
+                    <option value="1">teste 1</option>
+                    <option value="2" selected>teste 2 </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="arquivo">Arquivo:</label>
+
+                <input type="file" name="Arquivo" class="form-control rounded-0" id="Arquivo">
+
+            </div>
+
+
+
+            <div class="form-group form-check">
+                <label for="Ativo">Ativo:</label>
+                <input class="form-check-input position-static"   value="@arquivo.Ativo" type="checkbox" id="Ativo" name="Ativo" value="true" aria-label="...">
+            </div>
+
+            <button type="submit" class="btn btn-default">Salvar</button>
+        </form>
+    </div>
+

@@ -1,0 +1,53 @@
+﻿@{
+    List<Business.Arquivo> arquivo = ViewBag.Arquivo;
+}
+@if (TempData["sucesso"] != null)
+{
+    <div class="alert alert-success">@TempData["sucesso"]</div>
+}
+@if (TempData["erro"] != null)
+{
+    <div class="alert alert-danger">@TempData["erro"]</div>
+}
+<div class="jumbotron">
+    <h1>Arquivo</h1>
+    <div>
+        <a href="/paginas/novo" class=" btn btn-default">Nova arquivo </a>
+    </div>
+    <table class="table">
+        <tr>
+            <td>ID</td>
+            <td>Titulo</td>
+            <td>Arquivos</td>
+            <td>Processo</td>
+            <td>Categora</td>
+            <td></td>
+            <td></td>
+
+        </tr>
+        @foreach (var p in arquivo)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Titulo</td>
+
+                <td><a href="~/Upload/@(p.Arquivos)" target="_blank"><img src="~/Upload/@(p.Arquivos)" alt="" style="height: 23px; width: 56px; object-fit: contain; margin-right: 10px" /><small>Clique para abrir</small></a></td>
+
+                <td>@p.Processo</td>
+
+                <td>@p.NomeCategoria</td>
+
+                <td>
+                    <a href="/Arquivos/@p.Id/editar" class=" btn btn-primary"> Alterar dados </a>
+                </td>
+                <td>
+                    <a href="/Arquivos/@p.Id/excluir" class=" btn btn-danger" onclick="ValidaExclusao(@p.Id, event)"> Excluir dados </a>
+                </td>
+
+            </tr>
+        }
+    </table>
+</div>
+
+
+
